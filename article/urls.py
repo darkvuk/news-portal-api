@@ -7,8 +7,9 @@ from .views import (
 )
 
 urlpatterns = [
-    path('article', ArticleList.as_view()),
-    path('article/<int:pk>', ArticleDetail.as_view()),
-    path('comment', CommentList.as_view()),
-    path('comment/<int:pk>', CommentDetail.as_view())
+    path('', ArticleList.as_view()),
+    path('<int:pk>', ArticleDetail.as_view()),
+    path('<int:pk>/comment', CommentList.as_view()),
+    path('<int:article_id>/comment/<int:comment_id>', 
+         CommentDetail.as_view())
 ]

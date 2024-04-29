@@ -6,9 +6,7 @@ from django.utils import timezone
 class Article(models.Model):
     POSITION_CHOICES = [
         (0, 'Position 0'),
-        (1, 'Position 1'),
-        (2, 'Position 2'),
-        (3, 'Position 3'),
+        (1, 'Position 1')
     ]
 
     author_id = models.ForeignKey(
@@ -39,8 +37,10 @@ class Comment(models.Model):
     article_id = models.ForeignKey(
         Article, 
         on_delete=models.CASCADE, 
-        related_name='comments'
-        )
+        related_name='comments',
+        null=True,
+        blank=True
+    )
     author = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     created_at = models.DateTimeField(default=timezone.now)
