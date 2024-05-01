@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     
     # Project apps
     'user',
-    'article'
+    'article',
+    'portal'
 ]
 
 MIDDLEWARE = [

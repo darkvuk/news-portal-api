@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from portal.models import Category
 
 
 class Article(models.Model):
@@ -12,6 +13,13 @@ class Article(models.Model):
     author_id = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='articles',
+        null=True,
+        blank=True
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
